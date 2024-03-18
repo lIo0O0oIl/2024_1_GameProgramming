@@ -1,0 +1,29 @@
+{
+    "MummyGo": {
+        "checkpoints": [
+            {
+                "steps": 104,
+                "file_path": "D:\\GitHub\\2024_1_GameProgramming\\MLAgent_Practice\\ml-agents-release_20\\ml-agents-release_20\\results --resume\\MummyGo\\MummyGo\\MummyGo-104.onnx",
+                "reward": -0.9929999828338623,
+                "creation_time": 1710740778.0330956,
+                "auxillary_file_paths": [
+                    "D:\\GitHub\\2024_1_GameProgramming\\MLAgent_Practice\\ml-agents-release_20\\ml-agents-release_20\\results --resume\\MummyGo\\MummyGo\\MummyGo-104.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 104,
+            "file_path": "D:\\GitHub\\2024_1_GameProgramming\\MLAgent_Practice\\ml-agents-release_20\\ml-agents-release_20\\results --resume\\MummyGo\\MummyGo.onnx",
+            "reward": -0.9929999828338623,
+            "creation_time": 1710740778.0330956,
+            "auxillary_file_paths": [
+                "D:\\GitHub\\2024_1_GameProgramming\\MLAgent_Practice\\ml-agents-release_20\\ml-agents-release_20\\results --resume\\MummyGo\\MummyGo\\MummyGo-104.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}

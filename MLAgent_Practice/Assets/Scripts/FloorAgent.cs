@@ -7,55 +7,89 @@ using Unity.MLAgents.Actuators;
 
 public class FloorAgent : Agent
 {
-    public Transform ballTransform;
-    private Rigidbody ballRigidbody;
+    public Transform ballTrm;
+    private Rigidbody ballRigid;
 
-    // 환경이 처음 시작될 떄 한번만 실행되는 초기화 함수 (Start())
+    // 처음 한번 실행되는 초기화 함수
     public override void Initialize()
     {
-        ballRigidbody = ballTransform.GetComponent<Rigidbody>();
+
+        ballRigid = ballTrm.GetComponent<Rigidbody>();
+
     }
 
-    // 각 에피소드가 시작될 때 호출되는 함수 => 게임한판 마다 실행. 환경의 상태를 초기화하는 역할
+    // 각 에피소드가 시작될 때 
     public override void OnEpisodeBegin()
     {
-        // Floor : x, z 축 기준으로 무작위하게 살짝 회전시킴
+        // Floor X Y Z 무작위하게 회전시킨다
+
         transform.rotation = new Quaternion(0, 0, 0, 0);
         transform.Rotate(new Vector3(1, 0, 0), Random.Range(-10f, 10f));
         transform.Rotate(new Vector3(0, 0, 1), Random.Range(-10f, 10f));
 
-        // Ball : velocity 와 위치를 초기화 한다.
-        ballRigidbody.velocity = new Vector3(0, 0, 0);
-        ballTransform.localPosition = new Vector3(Random.Range(-1.5f, 1.5f), 1.5f, Random.Range(-1.5f, 1.5f));
+        ballRigid.velocity = Vector3.zero;
+        ballTrm.localPosition = new Vector3(Random.Range(-1.5f, 1.5f), 1.5f, Random.Range(-1.5f, 1.5f));
+
     }
 
-    // input 으로 어떤 값을 넣어줄지. 관측은 시야, 백터 관측이 있는데 얘는 백터값. 자기에게 공과 바닥 정보를 줌.
-    // 에이전트의 관측을 설정하는 함수 => Vector observation(백터 관측)
+    // 에이전트의 관측을 생성하는 함수 => 벡터 관측
     public override void CollectObservations(VectorSensor sensor)
     {
-        // 에이전트의 센서가 관측하는 값의 개수는 8개 이다.
+        // 관측하는 값의 갯수 : 8(1, 1, 3, 3)
         sensor.AddObservation(transform.rotation.x);
         sensor.AddObservation(transform.rotation.z);
-        sensor.AddObservation(ballRigidbody.velocity);
-        sensor.AddObservation(ballTransform.position - transform.position);
+        sensor.AddObservation(ballRigid.velocity);
+        sensor.AddObservation(ballTrm.position - transform.position);
+
     }
 
-    // 에이전트의 행동을 설정하는 함수
     public override void OnActionReceived(ActionBuffers actions)
     {
-        // continuous Action 2개
-        var ContinuousActions = actions.ContinuousActions;
-        float z_rotation = Mathf.Clamp(ContinuousActions[0], -1f, 1f);
-        float x_rotation = Mathf.Clamp(ContinuousActions[1], -1f, 1f);
+
+        var continuousActions = actions.ContinuousActions;
+        float z_rotation = Mathf.Clamp(continuousActions[0], -1f, 1f);
+        float x_rotation = Mathf.Clamp(continuousActions[1], -1f, 1f);
 
         transform.Rotate(new Vector3(0, 0, 1), z_rotation);
-        transform.Rotate(new Vector3(1, 0, 0), x_rotation);         // 실제 행동
+        transform.Rotate(new Vector3(1, 0, 0), x_rotation);
 
+        if (ballTrm.position.y - transform.position.y < -2f)
+        {
+
+            SetReward(-1f);
+            EndEpisode();
+
+        }
+        else if (Mathf.Abs(ballTrm.position.x - transform.position.x) > 2.5f)
+        {
+
+            SetReward(-1f);
+            EndEpisode();
+
+        }
+        else if (Mathf.Abs(ballTrm.position.z - transform.position.z) > 2.5f)
+        {
+
+            SetReward(-1f);
+            EndEpisode();
+
+        }
+        else
+        {
+
+            SetReward(0.1f);
+
+        }
 
     }
 
+    // 사람이 Agent를 수동으로 제어하는 방법을 설정하는 함수
     public override void Heuristic(in ActionBuffers actionsOut)
     {
-        base.Heuristic(actionsOut);
+        // 방향키 입력을 통해 행동값을 설정한다.
+        var ContinuousActionsOut = actionsOut.ContinuousActions;
+        ContinuousActionsOut[0] = -Input.GetAxis("Horizontal");
+        ContinuousActionsOut[1] = Input.GetAxis("Vertical");
+
     }
 }

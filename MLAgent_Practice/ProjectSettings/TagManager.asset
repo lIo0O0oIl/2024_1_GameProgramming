@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - WALL
+  - TARGET
+  - GOOD_ITEM
+  - BAD_ITEM
+  - FISH
+  - BABY_PENGUIN
   layers:
   - Default
   - TransparentFX
