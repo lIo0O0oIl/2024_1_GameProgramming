@@ -12,6 +12,11 @@ TagManager:
   - BABY_PENGUIN
   - Obstacle
   - Scoring
+  - HINT
+  - BLACK
+  - RED
+  - GREEN
+  - BLUE
   layers:
   - Default
   - TransparentFX
