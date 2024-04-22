@@ -303,122 +303,24 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8865166980689189264, guid: 115d4daf81eeabf4797eff4d661d37fd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 220736351}
-    - targetCorrespondingSourceObject: {fileID: 8865166980689189264, guid: 115d4daf81eeabf4797eff4d661d37fd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 220736352}
-    - targetCorrespondingSourceObject: {fileID: 8865166980689189264, guid: 115d4daf81eeabf4797eff4d661d37fd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 220736350}
-    - targetCorrespondingSourceObject: {fileID: 8865166980689189264, guid: 115d4daf81eeabf4797eff4d661d37fd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 220736357}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 115d4daf81eeabf4797eff4d661d37fd, type: 3}
 --- !u!4 &220736348 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8092043612066415402, guid: 115d4daf81eeabf4797eff4d661d37fd, type: 3}
   m_PrefabInstance: {fileID: 220736347}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &220736349 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8865166980689189264, guid: 115d4daf81eeabf4797eff4d661d37fd, type: 3}
+--- !u!114 &220736352 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8383082203287196324, guid: 115d4daf81eeabf4797eff4d661d37fd, type: 3}
   m_PrefabInstance: {fileID: 220736347}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &220736350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 220736349}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DecisionPeriod: 5
-  TakeActionsBetweenDecisions: 1
---- !u!114 &220736351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 220736349}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_BrainParameters:
-    VectorObservationSize: 8
-    NumStackedVectorObservations: 1
-    m_ActionSpec:
-      m_NumContinuousActions: 0
-      BranchSizes: 0200000003000000
-    VectorActionSize: 0200000003000000
-    VectorActionDescriptions: []
-    VectorActionSpaceType: 0
-    hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
-  m_InferenceDevice: 0
-  m_BehaviorType: 0
-  m_BehaviorName: Penguin
-  TeamId: 0
-  m_UseChildSensors: 1
-  m_UseChildActuators: 1
-  m_DeterministicInference: 0
-  m_ObservableAttributeHandling: 0
---- !u!114 &220736352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 220736349}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6511cb9537a2a8c40afaf2324e6f6da7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 5000
-  moveSpeed: 5
-  turnSpeed: 180
-  heartPrefab: {fileID: 2860815646360892916, guid: 81da6655ef70b824b9bb8dfef01a4316, type: 3}
-  regurgitatedFishPrefab: {fileID: 5020003218134574595, guid: 7d75cacaef3e0ae4cb1958dadf8dde7c, type: 3}
---- !u!114 &220736357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 220736349}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SensorName: RayPerceptionSensor
-  m_DetectableTags: []
-  m_RaysPerDirection: 2
-  m_MaxRayDegrees: 60
-  m_SphereCastRadius: 0.2
-  m_RayLength: 70
-  m_RayLayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967291
-  m_ObservationStacks: 1
-  m_AlternatingRayOrder: 1
-  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
-  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
-  m_StartVerticalOffset: 0.2
-  m_EndVerticalOffset: 1.1
 --- !u!1001 &242647794
 PrefabInstance:
   m_ObjectHideFlags: 0

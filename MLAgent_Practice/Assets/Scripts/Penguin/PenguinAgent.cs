@@ -44,17 +44,17 @@ public class PenguinAgent : Agent
         var DiscreteActions = actions.DiscreteActions;
 
         // 앞으로 가지 않을지(0), 갈지(1)
-        float forwardAmount = DiscreteActions[0];
+        int forwardAmount = DiscreteActions[0];
 
         // 회전을 안할지(0), 왼쪽으로 회전할지(1), 오른쪽으로 회전할지(2)
-        float turnAmount = 0f;
+        int turnAmount = 0;
         if (DiscreteActions[1] == 1)
         {
-            turnAmount = -1f;
+            turnAmount = -1;
         }
         else if (DiscreteActions[1] == 2)
         {
-            turnAmount = 1f;
+            turnAmount = 1;
         }
 
 /*        rigidbody.MovePosition(transform.position + transform.forward * forwardAmount * moveSpeed * Time.fixedTime);
