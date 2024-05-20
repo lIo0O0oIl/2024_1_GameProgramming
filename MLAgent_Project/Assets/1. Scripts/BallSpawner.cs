@@ -8,13 +8,23 @@ public class BallSpawner : MonoBehaviour
 
     private void Start()
     {
-        BallSpawn();
+        //StartCoroutine(BallRoutine());
+        //BallSpawn();
     }
+
+/*    private IEnumerator BallRoutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            BallSpawn();
+        }
+    }*/
 
     public void BallSpawn()
     {
         GameObject throwBall = Instantiate(ball, transform.position, Quaternion.identity, transform);
-        Rigidbody ballRigidbody = throwBall.GetComponent<Rigidbody>();
+        Rigidbody ballRigidbody = throwBall.GetComponentInChildren<Rigidbody>();
 
         float angle = Random.Range(-15f, 15f);      // 회전값
         float zForce, yForce;  // 탁구대에서 앞으로 가는 힘 -40쪽이 적은 힘. 절댓값.    // 위로 가는 힘

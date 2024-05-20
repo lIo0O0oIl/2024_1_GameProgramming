@@ -8,7 +8,7 @@ public class Floor : MonoBehaviour
 
     public void BallEnter(GameObject ball)
     {
-        //Destroy(ball);
+        Destroy(ball);
         ball.SetActive(false);
         Debug.Log("∞‘¿” ≥°");
         ballSpawner.BallSpawn();
