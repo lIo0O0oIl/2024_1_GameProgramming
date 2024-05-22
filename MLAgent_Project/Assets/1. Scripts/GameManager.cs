@@ -15,4 +15,12 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Cursor.visible = !Cursor.visible;
+        }
+    }
 }

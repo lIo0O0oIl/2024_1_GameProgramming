@@ -18,33 +18,37 @@ public class TestAI : MonoBehaviour
     {
         #region 키보드 움직임 관련
         float z = Input.GetAxisRaw("Horizontal");
+        if (z != 0f) z *= -1;
         transform.position += new Vector3(0, 0, z) * speed * Time.deltaTime;
         transform.position = new Vector3(transform.position.x, transform.position.y, Mathf.Clamp(transform.position.z, -0.75f, 0.75f));
         anim.MoveAnim(z);
         #endregion
 
-        #region 마우스 움직임 따라 움직이기
-        //Debug.Log(Camera.main.ScreenPointToRay(Input.mousePosition));
-        Vector3 x = Camera.main.ScreenPointToRay(Input.mousePosition).origin;
-        x.y = 0;
-        x.z = 0;
-        Debug.Log(x);
+        #region 마우스 움직임 따라 움직이기 & 스윙
+        Vector2 mousePos = Input.mousePosition;
 
-        //Debug.Log(x);
-        handTarget.localPosition += x;
-        // 0.1 이 되면 손 반대로 움직여야함.
-        #endregion
+        mousePos.y = Mathf.Lerp(1f, 1.9f, mousePos.y / 1080);
+        if (mousePos.x >= 540)      // 오른쪽
+        {
+            handTarget.localRotation = Quaternion.Euler(-90, -180, 90);
+        }
+        else
+        {
+            handTarget.localRotation = Quaternion.Euler(-90, -180, -65);
+        }
+        mousePos.x = Mathf.Lerp(-0.29f, 0.65f, mousePos.x / 1920);
 
-        #region 스윙하기
+        // 스윙부분
         if (Input.GetMouseButtonDown(0))        // AI 가 바라보는 곳을 기준으로 왼쪽으로 밀기
         {
-
+            Debug.Log("왼쪽으로 밀기");
         }
-
-        if (Input.GetMouseButtonDown(2))       // 오른쪽으로 밀기
+        if (Input.GetMouseButtonDown(1))       // 오른쪽으로 밀기
         {
-
+            Debug.Log("오른쪽으로 밀기");
         }
+
+        handTarget.localPosition = new Vector3(mousePos.x, mousePos.y, handTarget.localPosition.z);
         #endregion
     }
 
