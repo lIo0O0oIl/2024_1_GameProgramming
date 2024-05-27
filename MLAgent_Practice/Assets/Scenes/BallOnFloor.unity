@@ -175,6 +175,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BallOnFloor (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 7917942439440313927, guid: 4392465fe9d154640a471c2d06c1e009, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -231,6 +235,10 @@ PrefabInstance:
     - target: {fileID: 7917942439440313927, guid: 4392465fe9d154640a471c2d06c1e009, type: 3}
       propertyPath: m_Name
       value: BallOnFloor (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7917942439440313927, guid: 4392465fe9d154640a471c2d06c1e009, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -289,6 +297,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BallOnFloor (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 7917942439440313927, guid: 4392465fe9d154640a471c2d06c1e009, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -345,6 +357,10 @@ PrefabInstance:
     - target: {fileID: 7917942439440313927, guid: 4392465fe9d154640a471c2d06c1e009, type: 3}
       propertyPath: m_Name
       value: BallOnFloor (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7917942439440313927, guid: 4392465fe9d154640a471c2d06c1e009, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -497,6 +513,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BallOnFloor (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7917942439440313927, guid: 4392465fe9d154640a471c2d06c1e009, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -553,6 +573,10 @@ PrefabInstance:
     - target: {fileID: 7917942439440313927, guid: 4392465fe9d154640a471c2d06c1e009, type: 3}
       propertyPath: m_Name
       value: BallOnFloor (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7917942439440313927, guid: 4392465fe9d154640a471c2d06c1e009, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -703,6 +727,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BallOnFloor (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 7917942439440313927, guid: 4392465fe9d154640a471c2d06c1e009, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -760,6 +788,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BallOnFloor (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7917942439440313927, guid: 4392465fe9d154640a471c2d06c1e009, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -816,6 +848,10 @@ PrefabInstance:
     - target: {fileID: 7917942439440313927, guid: 4392465fe9d154640a471c2d06c1e009, type: 3}
       propertyPath: m_Name
       value: BallOnFloor
+      objectReference: {fileID: 0}
+    - target: {fileID: 7917942439440313927, guid: 4392465fe9d154640a471c2d06c1e009, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

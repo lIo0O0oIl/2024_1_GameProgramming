@@ -4,9 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - MyArea
   - AIArea
   - Ground
+  - PlayerArea
+  - Ball
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - 
   - UseCollider
   - 
-  - 
+  - NoShow
   - 
   - 
   - 

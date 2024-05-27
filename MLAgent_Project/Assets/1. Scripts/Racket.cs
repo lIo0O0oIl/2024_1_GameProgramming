@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Racket : MonoBehaviour
 {
-    [SerializeField] private bool myRacket = false;
+    [SerializeField] private bool playerRacket = false;
+
+    public float racketForce = 160;
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.TryGetComponent<Ball>(out Ball ball))
+        if (collision.collider.CompareTag("Ball"))
         {
-            collision.collider.GetComponent<Rigidbody>().AddForce(myRacket == true ? 1 : -1, 0.5f, 0);
-            //GameManager.Instance.aiAgent.GoodAction(1);
-            GameManager.Instance.testAI.GoodAction(1);
+                Debug.Log("»˚¿ª¡‡ø‰!");
+                collision.collider.GetComponent<Rigidbody>().AddForce(playerRacket == true ? -160 : racketForce, 70f, 0);
+                GameManager.Instance.aiAgent.GoodAction(1);
+            
         }
     }
 }

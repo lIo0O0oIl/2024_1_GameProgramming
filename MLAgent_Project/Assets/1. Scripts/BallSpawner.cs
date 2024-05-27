@@ -4,36 +4,28 @@ using UnityEngine;
 
 public class BallSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject ball;
+    public Transform ball;
+    private Rigidbody ballRigidbody;
 
-    private void Start()
+    public void BallThrow()
     {
-        //StartCoroutine(BallRoutine());
-        //BallSpawn();
-    }
-
-/*    private IEnumerator BallRoutine()
-    {
-        while (true)
+        ball.gameObject.SetActive(true);
+        if (ballRigidbody == null)
         {
-            yield return new WaitForSeconds(1f);
-            BallSpawn();
+            ballRigidbody = ball.GetComponent<Rigidbody>();
         }
-    }*/
 
-    public void BallSpawn()
-    {
-        GameObject throwBall = Instantiate(ball, transform.position, Quaternion.identity, transform);
-        Rigidbody ballRigidbody = throwBall.GetComponentInChildren<Rigidbody>();
+        ballRigidbody.velocity = Vector3.zero;
+        ball.rotation = Quaternion.identity;
 
-        float angle = Random.Range(-15f, 15f);      // 회전값
+        float angle = Random.Range(-12.5f, 12.5f);      // 회전값
         float zForce, yForce;  // 탁구대에서 앞으로 가는 힘 -40쪽이 적은 힘. 절댓값.    // 위로 가는 힘
 
-        zForce = Mathf.Lerp(-55f, -45f, angle / 15f);
-        yForce = Mathf.Lerp(35f, 25f, angle / 15f);
+        zForce = Mathf.Lerp(-75f, -65f, angle / 15f);
+        yForce = Mathf.Lerp(35f, 45f, angle / 15f);
 
         ballRigidbody.AddForce(new Vector3(zForce, yForce, angle));
-        Debug.Log($"앞으로 {zForce}만큼, 위로 {yForce}만큼, 각도는 {angle}임.");
+        //Debug.Log($"앞으로 {zForce}만큼, 위로 {yForce}만큼, 각도는 {angle}임.");
     }
 }
 

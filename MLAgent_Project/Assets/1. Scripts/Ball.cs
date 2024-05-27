@@ -1,68 +1,103 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEditor;
 using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    [SerializeField] private LayerMask mapLayer;
+    [SerializeField] private LayerMask map;
+    
+    private float touchTime = 0;
+    private int aiTableTouchCount = 0;
+    private int playerTableTouchCount = 0;
+    [SerializeField] private bool visiteAIArea = false;
 
-    private float delay = 0.25f;
-    private float nowTime = 0;
-    private bool is_delay = false;
+    public bool die = false;
 
-    private int tableTouchCount = 0;
+    private float delay = 0;
+    private bool delayStart = false;
 
-    private void Start()
+    public void BallInit()
     {
-        GameManager.Instance.aiAnimation.SetHeadAim(this.gameObject);
+        touchTime = 0;
+        aiTableTouchCount = 0;
+        playerTableTouchCount = 0;
+        visiteAIArea=false;
+        delay = 0;
     }
 
     private void Update()
     {
-        if (is_delay == false)
+        if (die) return;
+
+        if (!delayStart)
         {
-            if (Physics.SphereCast(transform.position, 0.05f, Vector3.down, out RaycastHit hit, 0.1f, mapLayer))
+            if (Physics.SphereCast(transform.position, 0.05f, Vector3.down, out RaycastHit hit, 0.1f, map))
             {
-                  if (hit.collider.CompareTag("Ground"))
-                  {
-                    //GameManager.Instance.aiAgent.GameOver();
-                    GameManager.Instance.testAI.GameOver();
-                    Destroy(this.gameObject);
-                  }
+                Debug.Log(hit.collider.gameObject.name);
+
+                if (hit.collider.CompareTag("Ground"))
+                {
+                    Debug.Log("¶¥");
+                    GameManager.Instance.aiAgent.GameOver(!visiteAIArea);
+                }
 
                 if (hit.collider.CompareTag("AIArea"))
                 {
-                    tableTouchCount++;
-                    if (tableTouchCount == 2)
+                    Debug.Log("ai");
+                    aiTableTouchCount++;
+                    if (aiTableTouchCount == 2)
                     {
-                        //GameManager.Instance.aiAgent.GameOver();
-                        GameManager.Instance.testAI.GameOver();
+                        aiTableTouchCount = 0;
+                        GameManager.Instance.aiAgent.GameOver(false);
                     }
-
-                    //GameManager.Instance.aiAgent.GoodAction(-1);
-                    GameManager.Instance.testAI.GoodAction(-1);
-                    is_delay = true;
-
+                    playerTableTouchCount = 0;
+                    visiteAIArea = true;
                 }
 
-                if (hit.collider.CompareTag("MyArea"))
+                if (hit.collider.CompareTag("PlayerArea"))
                 {
-                    //GameManager.Instance.aiAgent.GoodAction(1);
-                    GameManager.Instance.testAI.GoodAction(1);
-                    is_delay = true;
-                    tableTouchCount++;
+                    Debug.Log("player");
+                    playerTableTouchCount++;
+                    if (playerTableTouchCount == 2)
+                    {
+                        GameManager.Instance.aiAgent.GameOver(true);
+                    }
+                    aiTableTouchCount = 0;
+                    visiteAIArea = false;
                 }
+
+                delayStart = true;
+            }
+            else
+            {
+                touchTime = 0;
             }
         }
-        else
+
+        if (delayStart)
         {
-            nowTime += Time.deltaTime;
-            if (nowTime >= delay)
+            delay += Time.deltaTime;
+            if (delay > 0.5f)
             {
-                is_delay = false;
-                nowTime = 0;
+                delay = 0;
+                delayStart = false;
             }
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (die) return;
+        touchTime += Time.deltaTime;
+        if (touchTime > 2)
+        {
+            if (visiteAIArea)
+            {
+                GameManager.Instance.aiAgent.GameOver(true);
+            }
+             else   GameManager.Instance.aiAgent.GameOver(false);
         }
     }
 
@@ -70,7 +105,7 @@ public class Ball : MonoBehaviour
     {
         if (Selection.activeObject == gameObject)
         {
-            bool collision = Physics.SphereCast(transform.position, 0.05f, Vector3.down, out RaycastHit hit, 0.1f, mapLayer);
+            bool collision = Physics.SphereCast(transform.position, 0.05f, Vector3.down, out RaycastHit hit, 0.1f);
             if (collision)
             {
                 Gizmos.color = Color.red;
