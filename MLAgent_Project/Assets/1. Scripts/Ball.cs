@@ -101,7 +101,7 @@ public class Ball : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
+   /* private void OnDrawGizmos()
     {
         if (Selection.activeObject == gameObject)
         {
@@ -119,5 +119,5 @@ public class Ball : MonoBehaviour
             }
             Gizmos.color = Color.white;
         }
-    }
+    }*/
 }
