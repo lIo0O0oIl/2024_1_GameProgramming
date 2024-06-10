@@ -4,7 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/DrawLine.unity
+    guid: 2eb4dd750ef28d54fbe01da5c7c65b9b
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: c2f2b9814ec83ab43a54a0a6e0628538, type: 2}
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 6351ba3c240e2cd479f2e2c4858b78b5, type: 2}
