@@ -9,12 +9,12 @@ public class DrawButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public DrawLineController drawLineController;
     private bool isPressed;
 
-    public void OnPointerDown(PointerEventData eventData)       // ¹öÆ°ÀÌ ´­·ÈÀ» ¶§
+    public void OnPointerDown(PointerEventData eventData)       // ï¿½ï¿½Æ°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
     {
         isPressed = true;
     }
 
-    public void OnPointerUp(PointerEventData eventData)     // ¹öÆ°ÀÌ ¶§¾îÁ³À» ¶§
+    public void OnPointerUp(PointerEventData eventData)     // ï¿½ï¿½Æ°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
     {
         isPressed = false;
         drawLineController.StopDrawLine();
